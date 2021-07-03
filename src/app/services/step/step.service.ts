@@ -5,17 +5,15 @@ import { StepsSearchEnum } from 'src/app/enums/steps-search.enum';
   providedIn: 'root',
 })
 export class StepService {
-  private _currentStep: number;
+  currentStep: number;
+
+  searchWord: string;
+  searchWordWeight: number;
 
   constructor() {
-    this._currentStep = StepsSearchEnum.SET_SEARCH;
-  }
+    this.currentStep = StepsSearchEnum.SET_SEARCH;
 
-  get currentStep() {
-    return this._currentStep;
-  }
-
-  set currentStep(value: number) {
-    this._currentStep = value;
+    this.searchWord = '';
+    this.searchWordWeight = 0;
   }
 }
