@@ -1,1 +1,23 @@
-<p>search-word works!</p>
+<h1>
+  De que produto você deseja saber a quantidade de
+  <span class="carbon-text">carbono hoje?</span>
+</h1>
+
+<form>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>O que você está buscando?</mat-label>
+    <input
+      matInput
+      [formControl]="searchWordInputValue"
+      placeholder="Ex: leite, compota de abacaxi, chocolate..."
+    />
+  </mat-form-field>
+
+  <button
+    mat-button
+    (click)="onButtonContinueClick()"
+    [disabled]="!searchWordInputValue.valid"
+  >
+    Continuar
+  </button>
+</form>

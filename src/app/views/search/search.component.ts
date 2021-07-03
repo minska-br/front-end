@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { StepsSearchEnum } from 'src/app/enums/steps-search.enum';
+import { StepService } from 'src/app/services/step/step.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+  stepsEnum = StepsSearchEnum;
 
-  constructor() { }
+  constructor(private stepService: StepService) {}
 
-  ngOnInit(): void {
+  get progressBarValue(): number {
+    const maxSteps = StepsSearchEnum.STEPS_QUANTITY;
+    const stepPercent = 100 / maxSteps;
+
+    return stepPercent * this.currentStep;
   }
 
+  get currentStep(): number {
+    return this.stepService.currentStep;
+  }
 }

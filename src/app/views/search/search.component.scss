@@ -3,19 +3,6 @@
   flex-direction: column;
   justify-content: center;
   height: calc(100vh - 64px);
-
-  h1 {
-    font-size: 3em;
-    color: #304050;
-    line-height: 48px;
-    font-weight: bold;
-    margin-bottom: 32px;
-    text-align: justify;
-
-    .carbon-text {
-      color: #bdbdbd;
-    }
-  }
 }
 
 .progress-bar-container {

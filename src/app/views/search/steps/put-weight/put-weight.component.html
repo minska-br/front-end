@@ -1,1 +1,30 @@
-<p>put-weight works!</p>
+<h1>
+  Qual o peso que você deseja calcular de
+  <span class="search-word-text">{{ searchWord }}</span
+  >?
+</h1>
+
+<form>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Peso (kg)</mat-label>
+    <input
+      matInput
+      [formControl]="searchWordWeightInputValue"
+      placeholder="Ex: 40, 50, 0.2"
+    />
+  </mat-form-field>
+
+  <div>
+    <button mat-button color="accent" (click)="onButtonReturnClick()">
+      Voltar
+    </button>
+
+    <button
+      mat-button
+      (click)="onButtonContinueClick()"
+      [disabled]="!searchWordWeightInputValue.valid"
+    >
+      Continuar
+    </button>
+  </div>
+</form>
