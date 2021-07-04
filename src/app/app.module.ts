@@ -15,6 +15,8 @@ import { PutWeightComponent } from './views/search/steps/put-weight/put-weight.c
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { ChooseWordComponent } from './views/search/steps/choose-word/choose-word.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { MatInputModule } from '@angular/material/input';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
-    SearchWordComponent,
     PutWeightComponent,
+    SearchWordComponent,
+    ChooseWordComponent,
   ],
   imports: [
     BrowserModule,
+    MatListModule,
     MatInputModule,
     MatButtonModule,
     AppRoutingModule,

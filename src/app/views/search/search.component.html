@@ -10,4 +10,8 @@
   ></app-search-word>
 
   <app-put-weight *ngIf="currentStep === stepsEnum.SET_WEIGHT"></app-put-weight>
+
+  <app-choose-word
+    *ngIf="currentStep === stepsEnum.CHOOSE_RESULT"
+  ></app-choose-word>
 </div>

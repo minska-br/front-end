@@ -13,7 +13,7 @@ export class SearchComponent {
   constructor(private stepService: StepService) {}
 
   get progressBarValue(): number {
-    const maxSteps = StepsSearchEnum.STEPS_QUANTITY;
+    const maxSteps = StepsSearchEnum.STEPS_QUANTITY + 1;
     const stepPercent = 100 / maxSteps;
 
     return stepPercent * this.currentStep;
