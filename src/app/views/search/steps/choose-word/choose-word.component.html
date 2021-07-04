@@ -1,0 +1,7 @@
+<h1>Nós encontramos os seguintes resultados. Selecione um item abaixo:</h1>
+
+<mat-selection-list #shoes [multiple]="false">
+  <mat-list-option *ngFor="let word of resultFromSearchWord" [value]="word">
+    {{ word }}
+  </mat-list-option>
+</mat-selection-list>

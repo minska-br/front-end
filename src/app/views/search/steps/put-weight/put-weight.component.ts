@@ -8,10 +8,18 @@ import { StepService } from 'src/app/services/step/step.service';
   templateUrl: './put-weight.component.html',
   styleUrls: ['./put-weight.component.scss'],
 })
-export class PutWeightComponent {
+export class PutWeightComponent implements OnInit {
   searchWordWeightInputValue = new FormControl('', Validators.required);
 
   constructor(private stepService: StepService) {}
+
+  ngOnInit() {
+    if (Boolean(this.stepService.searchWordWeight)) {
+      this.searchWordWeightInputValue.setValue(
+        this.stepService.searchWordWeight
+      );
+    }
+  }
 
   get searchWord() {
     return this.stepService.searchWord;
