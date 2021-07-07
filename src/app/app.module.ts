@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { ChooseWordComponent } from './views/search/steps/choose-word/choose-word.component';
+import { CalculationResultComponent } from './views/calculation-result/calculation-result.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ChooseWordComponent } from './views/search/steps/choose-word/choose-wor
     PutWeightComponent,
     SearchWordComponent,
     ChooseWordComponent,
+    CalculationResultComponent,
   ],
   imports: [
     BrowserModule,

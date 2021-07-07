@@ -1,11 +1,19 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: calc(100vh - 64px);
-}
-
 .progress-bar-container {
   width: 33%;
   margin-bottom: 32px;
+}
+
+.container {
+  display: flex;
+  max-width: 70%;
+  margin-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 64px);
+
+  @media (max-width: 980px) {
+    max-width: 90%;
+  }
 }
