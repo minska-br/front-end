@@ -8,19 +8,10 @@ import { StepService } from 'src/app/services/step/step.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   stepsEnum = StepsSearchEnum;
 
-  constructor(
-    private stepService: StepService,
-    private calculationService: CalculationService
-  ) {}
-
-  ngOnInit() {
-    this.calculationService.getProductList('pastel').subscribe((value) => {
-      console.log(value);
-    });
-  }
+  constructor(private stepService: StepService) {}
 
   get progressBarValue(): number {
     const maxSteps = StepsSearchEnum.STEPS_QUANTITY + 1;
