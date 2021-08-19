@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { StepsSearchEnum } from 'src/app/enums/steps-search.enum';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductList } from 'src/app/interfaces/product-list.interface';
 import { CalculationService } from 'src/app/services/calculation/calculation.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -16,8 +14,6 @@ export class ChooseWordComponent implements OnInit {
   resultFromSearchWord: ProductList[] = [];
 
   constructor(
-    private router: Router,
-    private _snackBar: MatSnackBar,
     private stepService: StepService,
     private loadingService: LoadingService,
     private calculationService: CalculationService
