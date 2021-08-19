@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./choose-word.component.scss'],
 })
 export class ChooseWordComponent {
+  constructor() {}
+
   resultFromSearchWord: string[] = [
     'Banana',
     'Pamonha',
