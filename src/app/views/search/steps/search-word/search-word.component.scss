@@ -15,6 +15,15 @@ h1 {
   }
 }
 
+.buttons-container {
+  width: 100%;
+  display: flex;
+  color: #304050;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .input-container {
   display: flex;
   flex-direction: column;

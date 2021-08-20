@@ -9,6 +9,7 @@ import { StepService } from 'src/app/services/step/step.service';
   styleUrls: ['./search-word.component.scss'],
 })
 export class SearchWordComponent implements OnInit {
+  isProduct: boolean = false;
   searchWordInputValue = new FormControl('', Validators.required);
 
   constructor(private stepService: StepService) {}
@@ -19,11 +20,25 @@ export class SearchWordComponent implements OnInit {
     }
   }
 
+  get isRecipe(): boolean {
+    return this.stepService.isRecipe;
+  }
+
+  onHandleIsRecipeCheckbox() {
+    this.stepService.isRecipe = !this.stepService.isRecipe;
+  }
+
   onButtonContinueClick() {
     this.stepService.searchWord = this.searchWordInputValue.value
       .toLowerCase()
       .trim();
 
-    this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
+    this.stepService.increaseStepCounter();
+
+    if (this.stepService.isRecipe) {
+      this.stepService.currentStep = StepsSearchEnum.CHOOSE_RESULT;
+    } else {
+      this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
+    }
   }
 }

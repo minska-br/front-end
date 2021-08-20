@@ -15,12 +15,15 @@ import { PutWeightComponent } from './views/search/steps/put-weight/put-weight.c
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { ChooseWordComponent } from './views/search/steps/choose-word/choose-word.component';
 import { CalculationResultComponent } from './views/calculation-result/calculation-result.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,12 @@ import { LoadingComponent } from './components/loading/loading.component';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
+    LoadingComponent,
+    NotFoundComponent,
     PutWeightComponent,
     SearchWordComponent,
     ChooseWordComponent,
     CalculationResultComponent,
-    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     MatProgressBarModule,
     BrowserAnimationsModule,

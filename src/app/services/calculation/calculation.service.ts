@@ -24,5 +24,13 @@ export class CalculationService {
       .pipe(take(1));
   }
 
-  sendInfosToCalculate() {}
+  startCalc(productId: number, weight: number) {
+    let urlRequest = MockUrlEnum.START_CALC as string;
+
+    if (environment.production) {
+      urlRequest = `${environment.URL_BASE}/calculation`;
+    }
+
+    // return this.http.post(urlRequest, { id:  })
+  }
 }

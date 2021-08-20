@@ -6,12 +6,13 @@ header {
   z-index: 20;
   position: fixed;
   align-items: center;
-  justify-content: center;
   background-color: white;
+  justify-content: space-between;
   border-bottom: 1px solid #304050;
 
   h1 {
     font-size: 24px;
+    margin-left: 24px;
     margin-bottom: 0px;
 
     .easy-text {
@@ -21,6 +22,24 @@ header {
     .carbon-text {
       font-weight: bolder;
       color: #304050;
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin-bottom: 0;
+      margin-right: 24px;
+      font-weight: bolder;
+      color: #304050;
+
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid #304050;
+      }
     }
   }
 }

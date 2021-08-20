@@ -1,5 +1,6 @@
 <h1>
-  Qual produto você deseja saber a quantidade de
+  Qual <u *ngIf="!isRecipe">produto</u><u *ngIf="isRecipe">receita</u> você
+  deseja saber a quantidade de
   <span class="carbon-text">carbono hoje?</span>
 </h1>
 
@@ -13,11 +14,21 @@
     />
   </mat-form-field>
 
-  <button
-    mat-button
-    (click)="onButtonContinueClick()"
-    [disabled]="!searchWordInputValue.valid"
-  >
-    Continuar
-  </button>
+  <div class="buttons-container">
+    <mat-checkbox
+      color="primary"
+      [checked]="isRecipe"
+      class="example-margin"
+      (change)="onHandleIsRecipeCheckbox()"
+      >É uma receita?</mat-checkbox
+    >
+
+    <button
+      mat-button
+      (click)="onButtonContinueClick()"
+      [disabled]="!searchWordInputValue.valid"
+    >
+      Continuar
+    </button>
+  </div>
 </div>

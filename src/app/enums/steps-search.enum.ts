@@ -1,7 +1,7 @@
 enum StepsSearchEnum {
-  SET_SEARCH = 1,
-  SET_WEIGHT = 2,
-  CHOOSE_RESULT = 3,
+  SET_SEARCH = 'set_search',
+  SET_WEIGHT = 'set_weight',
+  CHOOSE_RESULT = 'choose_result',
   STEPS_QUANTITY = 3,
 }
 

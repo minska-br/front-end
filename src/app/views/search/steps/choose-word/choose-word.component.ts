@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { StepsSearchEnum } from 'src/app/enums/steps-search.enum';
 import { ProductList } from 'src/app/interfaces/product-list.interface';
 import { CalculationService } from 'src/app/services/calculation/calculation.service';
@@ -14,6 +15,7 @@ export class ChooseWordComponent implements OnInit {
   resultFromSearchWord: ProductList[] = [];
 
   constructor(
+    private snackbar: MatSnackBar,
     private stepService: StepService,
     private loadingService: LoadingService,
     private calculationService: CalculationService
@@ -38,9 +40,19 @@ export class ChooseWordComponent implements OnInit {
           this.loadingService.stopLoading();
         },
         () => {
+          this.snackbar.open(
+            'Ocorreu um erro ao realizar a busca. Tente novamente. '
+          );
+
           this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
           this.loadingService.stopLoading();
         }
       );
+  }
+
+  onButtonReturnClick() {
+    this.stepService.decreaseStepCounter();
+
+    this.stepService.currentStep = StepsSearchEnum.SET_SEARCH;
   }
 }
