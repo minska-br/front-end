@@ -24,6 +24,7 @@ import { ChooseWordComponent } from './views/search/steps/choose-word/choose-wor
 import { CalculationResultComponent } from './views/calculation-result/calculation-result.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { CalculationsComponent } from './views/calculations/calculations.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
     SearchWordComponent,
     ChooseWordComponent,
     CalculationResultComponent,
+    CalculationsComponent,
   ],
   imports: [
     BrowserModule,

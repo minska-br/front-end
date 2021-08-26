@@ -24,13 +24,25 @@ export class CalculationService {
       .pipe(take(1));
   }
 
-  startCalc(productId: number, weight: number) {
+  startCalc(
+    recipeId: number | null,
+    foodName: string,
+    searchType: string,
+    weightAmount: number
+  ) {
     let urlRequest = MockUrlEnum.START_CALC as string;
 
     if (environment.production) {
       urlRequest = `${environment.URL_BASE}/calculation`;
     }
 
-    // return this.http.post(urlRequest, { id:  })
+    return this.http
+      .post(urlRequest, {
+        foodName,
+        type: searchType,
+        recipeId: recipeId,
+        amount: weightAmount,
+      })
+      .pipe(take(1));
   }
 }
