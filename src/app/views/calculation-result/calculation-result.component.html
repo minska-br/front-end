@@ -1,7 +1,12 @@
 <div class="header-result-container">
   <h2>
-    O cálculo da pegada de carbono para o Pastel é de:<br />
-    <span class="quantity"><u>45 toneladas.</u></span>
+    O cálculo da pegada de carbono para o {{ calculationInfo.name }} é de:<br />
+    <span class="quantity"
+      ><u
+        >{{ calculationInfo.totalCarbonFootprint | number: "1.0-3" }}
+        {{ calculationInfo.unit }}.</u
+      ></span
+    >
   </h2>
 </div>
 
@@ -23,130 +28,33 @@
   </div>
 
   <div class="carbon-steps-container">
-    <div class="card">
+    <div *ngFor="let process of calculationInfo.processes" class="card">
       <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
+        <h3 [ngStyle]="{ color: !process.calculated && 'red' }">
+          {{ process.name }}
+        </h3>
+        <p [ngStyle]="{ color: !process.calculated && 'red' }">
+          {{ process.processNameFound }}
         </p>
       </div>
 
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Preparar Massa</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-          volutpat, viverra magna risus aliquam massa. Ac aliquam ac volutpat,
-          viverra magna risus.
-        </p>
-      </div>
-
-      <p class="carbon-quantity">Experienced team</p>
+      <p
+        class="carbon-quantity"
+        [ngStyle]="{ color: !process.calculated && 'red' }"
+      >
+        {{ process.value | number: "1.0-3" }} {{ process.unit }}
+      </p>
     </div>
   </div>
 
   <div class="try-again-container">
     <div>
-      <h3>Deseja realizar um novo cálculo?</h3>
-      <p>
-        Calcule receitas ou produtos quantas vezes quiser.
-      </p>
+      <h3>
+        Para o tiramissu conseguimos calcular
+        {{ calculationInfo.calculatedPercentage | percent }} de
+        {{ calculationInfo.processes.length }} processos.
+      </h3>
+      <p>Calcule receitas ou produtos quantas vezes quiser.</p>
     </div>
     <button mat-raised-button>Calcular Novamente</button>
   </div>
