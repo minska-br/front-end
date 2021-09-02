@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { MockUrlEnum } from 'src/app/enums/mocks-url.enum';
 import { ProductList } from 'src/app/interfaces/product-list.interface';
 import { Observable } from 'rxjs';
+import { CalculationList } from 'src/app/interfaces/calculation-list.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,16 @@ export class CalculationService {
     return this.http
       .get<ProductList[]>(urlRequest, { params: { value: searchedProduct } })
       .pipe(take(1));
+  }
+
+  getCalculationList() {
+    let urlRequest = MockUrlEnum.CALCULATION_LIST as string;
+
+    if (environment.production) {
+      urlRequest = `${environment.URL_BASE}/calculation/requests`;
+    }
+
+    return this.http.get<CalculationList[]>(urlRequest).pipe(take(1));
   }
 
   startCalc(

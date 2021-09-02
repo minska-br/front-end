@@ -13,6 +13,7 @@ import { SearchComponent } from './views/search/search.component';
 import { SearchWordComponent } from './views/search/steps/search-word/search-word.component';
 import { PutWeightComponent } from './views/search/steps/put-weight/put-weight.component';
 
+import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -44,6 +45,7 @@ import { CalculationsComponent } from './views/calculations/calculations.compone
     BrowserModule,
     MatListModule,
     MatInputModule,
+    MatTableModule,
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
