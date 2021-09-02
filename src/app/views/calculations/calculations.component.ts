@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CalculationStatusEnum } from 'src/app/enums/calculation-status.enum';
+import { PagesEnum } from 'src/app/enums/pages.enum';
 import { CalculationService } from 'src/app/services/calculation/calculation.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
 
@@ -39,7 +40,7 @@ export class CalculationsComponent implements OnInit {
         );
 
         this.loadingService.stopLoading();
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl(PagesEnum.HOME);
       }
     );
   }
@@ -61,10 +62,10 @@ export class CalculationsComponent implements OnInit {
   }
 
   onReturnButtonClick() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl(PagesEnum.HOME);
   }
 
   redirectToResultPage(row: any) {
-    this.router.navigateByUrl(`/result/${row.requestId}`);
+    this.router.navigateByUrl(`${PagesEnum.RESULT}/${row.requestId}`);
   }
 }

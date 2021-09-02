@@ -13,4 +13,8 @@ export class HeaderComponent {
   onClickToCalcList() {
     this.router.navigateByUrl(PagesEnum.CALCULATIONS);
   }
+
+  onClickToHome() {
+    this.router.navigateByUrl(PagesEnum.HOME);
+  }
 }

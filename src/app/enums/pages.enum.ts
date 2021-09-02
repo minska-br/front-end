@@ -1,5 +1,6 @@
 enum PagesEnum {
   RESULT = 'result',
+  HOME = '/',
   CALCULATIONS = 'calculations',
 }
 

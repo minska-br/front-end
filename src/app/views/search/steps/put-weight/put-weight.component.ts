@@ -57,7 +57,7 @@ export class PutWeightComponent implements OnInit {
         () => {
           this.loadingService.stopLoading();
 
-          this.router.navigateByUrl(PagesEnum.RESULT);
+          this.router.navigateByUrl(PagesEnum.CALCULATIONS);
         },
         () => {
           this.snackbar.open(
