@@ -30,7 +30,7 @@ export class ChooseWordComponent implements OnInit {
   }
 
   onSelectProduct(product: ProductList) {
-    this.stepService.productId = product.id;
+    this.stepService.recipeId = product.id;
     this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
   }
 

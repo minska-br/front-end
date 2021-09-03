@@ -9,7 +9,7 @@ export class StepService {
   currentStepValue: number;
 
   isRecipe: boolean;
-  productId: number | undefined;
+  recipeId: number | null;
 
   searchWord: string;
   searchWordWeight: number;
@@ -18,6 +18,7 @@ export class StepService {
     this.currentStepValue = 1;
     this.currentStep = StepsSearchEnum.SET_SEARCH;
 
+    this.recipeId = null;
     this.searchWord = '';
     this.isRecipe = false;
     this.searchWordWeight = 0;
@@ -40,7 +41,7 @@ export class StepService {
     this.currentStep = StepsSearchEnum.SET_SEARCH;
 
     this.searchWord = '';
-    this.productId = undefined;
+    this.recipeId = null;
     this.isRecipe = false;
     this.searchWordWeight = 0;
   }
