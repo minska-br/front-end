@@ -24,21 +24,25 @@ export class CalculationResultComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadingService.startLoading();
+
     this.getCalculationInfo();
   }
 
-  getCalculationInfo() {
-    this.loadingService.startLoading();
+  get isLoading() {
+    return this.loadingService.isLoading;
+  }
 
-    const requestId = this.route.snapshot.params['id'];
-    if (!requestId) {
+  getCalculationInfo() {
+    const calculationId = this.route.snapshot.params['id'];
+    if (!calculationId) {
       this.loadingService.stopLoading();
       this.router.navigateByUrl(PagesEnum.HOME);
 
       return;
     }
 
-    this.calculationService.getCalculationResult(requestId).subscribe(
+    this.calculationService.getCalculationResult(calculationId).subscribe(
       (success) => {
         this.calculationInfo = success;
         this.loadingService.stopLoading();

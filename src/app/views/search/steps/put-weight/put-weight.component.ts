@@ -44,6 +44,7 @@ export class PutWeightComponent implements OnInit {
 
     const searchWord = this.stepService.searchWord;
     const weightAmount = this.stepService.searchWordWeight;
+    const recipeId = this.stepService.recipeId;
 
     const searchType = this.stepService.isRecipe
       ? SearchTypeEnum.RECIPE
@@ -52,7 +53,7 @@ export class PutWeightComponent implements OnInit {
     this.loadingService.startLoading();
 
     this.calculationService
-      .startCalc(null, searchWord, searchType, weightAmount)
+      .startCalc(recipeId, searchWord, searchType, weightAmount)
       .subscribe(
         () => {
           this.loadingService.stopLoading();
