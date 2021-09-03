@@ -4,6 +4,7 @@
   <mat-selection-list [multiple]="false">
     <mat-list-option
       [value]="result.id"
+      (click)="onSelectProduct(result)"
       *ngFor="let result of resultFromSearchWord"
     >
       {{ result.name }}

@@ -29,6 +29,11 @@ export class ChooseWordComponent implements OnInit {
     return this.loadingService.isLoading;
   }
 
+  onSelectProduct(product: ProductList) {
+    this.stepService.productId = product.id;
+    this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
+  }
+
   getProductList() {
     this.loadingService.startLoading();
 
@@ -44,7 +49,9 @@ export class ChooseWordComponent implements OnInit {
             'Ocorreu um erro ao realizar a busca. Tente novamente. '
           );
 
-          this.stepService.currentStep = StepsSearchEnum.SET_WEIGHT;
+          this.stepService.currentStep = StepsSearchEnum.SET_SEARCH;
+          this.stepService.decreaseStepCounter();
+
           this.loadingService.stopLoading();
         }
       );

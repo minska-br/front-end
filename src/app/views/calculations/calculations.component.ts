@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CalculationStatusEnum } from 'src/app/enums/calculation-status.enum';
@@ -11,7 +11,8 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
   templateUrl: './calculations.component.html',
   styleUrls: ['./calculations.component.scss'],
 })
-export class CalculationsComponent implements OnInit {
+export class CalculationsComponent implements OnInit, OnDestroy {
+  resultInterval: any;
   tableDataSource: any[] = [];
   displayedColumns: string[] = ['product', 'startTime', 'status'];
 
@@ -24,6 +25,18 @@ export class CalculationsComponent implements OnInit {
 
   ngOnInit() {
     this.loadCalculationsList();
+
+    this.resultInterval = setInterval(() => {
+      this.loadCalculationsList();
+    }, 30000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.resultInterval);
+  }
+
+  get isLoading() {
+    return this.loadingService.isLoading;
   }
 
   loadCalculationsList() {
@@ -36,7 +49,7 @@ export class CalculationsComponent implements OnInit {
       },
       () => {
         this.snackbar.open(
-          'Ocorreu um erro ao realizar a busca. Tente novamente. '
+          'Ocorreu um erro ao realizar o carregamento. Tente novamente. '
         );
 
         this.loadingService.stopLoading();
@@ -50,12 +63,20 @@ export class CalculationsComponent implements OnInit {
       return 'blue';
     }
 
+    if (status === CalculationStatusEnum.ERROR) {
+      return 'red';
+    }
+
     return 'green';
   }
 
   returnStatusNameByStatusByAPI(status: string) {
     if (status === CalculationStatusEnum.CALCULATING) {
       return 'Calculando';
+    }
+
+    if (status === CalculationStatusEnum.ERROR) {
+      return 'Falhou';
     }
 
     return 'Finalizado';
@@ -66,6 +87,8 @@ export class CalculationsComponent implements OnInit {
   }
 
   redirectToResultPage(row: any) {
-    this.router.navigateByUrl(`${PagesEnum.RESULT}/${row.requestId}`);
+    if (row.status === CalculationStatusEnum.CALCULATED) {
+      this.router.navigateByUrl(`${PagesEnum.RESULT}/${row.calculationId}`);
+    }
   }
 }

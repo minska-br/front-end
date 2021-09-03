@@ -18,7 +18,7 @@ export class CalculationService {
     let urlRequest = MockUrlEnum.PRODUCT_LIST as string;
 
     if (environment.production) {
-      urlRequest = `${environment.URL_BASE}/recipes`;
+      urlRequest = `${environment.URL_BASE_CRAWLER}/recipes/allrecipes`;
     }
 
     return this.http
@@ -26,11 +26,11 @@ export class CalculationService {
       .pipe(take(1));
   }
 
-  getCalculationResult(requestId: string) {
+  getCalculationResult(calculationId: string) {
     let urlRequest = MockUrlEnum.CALCULATION_RESULT as string;
 
     if (environment.production) {
-      urlRequest = `${environment.URL_BASE}/calculation/requests/${requestId}`;
+      urlRequest = `${environment.URL_BASE}/calculation/${calculationId}`;
     }
 
     return this.http.get<CalculationInfo>(urlRequest).pipe(take(1));

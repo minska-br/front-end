@@ -1,61 +1,64 @@
-<div class="header-result-container">
-  <h2>
-    O cálculo da pegada de carbono para o {{ calculationInfo.name }} é de:<br />
-    <span class="quantity"
-      ><u
-        >{{ calculationInfo.totalCarbonFootprint | number: "1.0-3" }}
-        {{ calculationInfo.unit }}.</u
-      ></span
-    >
-  </h2>
-</div>
-
-<div class="container">
-  <div class="introduction-text-container">
-    <div class="text">
-      <h2>Como funciona o cálculo?</h2>
-      <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </div>
-
-    <img class="image" />
+<div *ngIf="!isLoading">
+  <div class="header-result-container">
+    <h2>
+      O cálculo da pegada de carbono para o {{ calculationInfo.name }} é de:<br />
+      <span class="quantity"
+        ><u
+          >{{ calculationInfo.totalCarbonFootprint | number: "1.0-3" }}
+          {{ calculationInfo.unit }}.</u
+        ></span
+      >
+    </h2>
   </div>
 
-  <div class="carbon-steps-container">
-    <div *ngFor="let process of calculationInfo.processes" class="card">
-      <div>
-        <h3 [ngStyle]="{ color: !process.calculated && 'red' }">
-          {{ process.name }}
-        </h3>
-        <p [ngStyle]="{ color: !process.calculated && 'red' }">
-          {{ process.processNameFound }}
+  <div class="container">
+    <div class="introduction-text-container">
+      <div class="text">
+        <h2>Como funciona o cálculo?</h2>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum. Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+          id est laborum.
         </p>
       </div>
 
-      <p
-        class="carbon-quantity"
-        [ngStyle]="{ color: !process.calculated && 'red' }"
-      >
-        {{ process.value | number: "1.0-3" }} {{ process.unit }}
-      </p>
+      <img class="image" />
     </div>
-  </div>
 
-  <div class="try-again-container">
-    <div>
-      <h3>
-        Para o tiramissu conseguimos calcular
-        {{ calculationInfo.calculatedPercentage | percent }} de
-        {{ calculationInfo.processes.length }} processos.
-      </h3>
-      <p>Calcule receitas ou produtos quantas vezes quiser.</p>
+    <div class="carbon-steps-container">
+      <div *ngFor="let process of calculationInfo.processes" class="card">
+        <div>
+          <h3 [ngStyle]="{ color: !process.calculated && 'red' }">
+            {{ process.name }}
+          </h3>
+          <p [ngStyle]="{ color: !process.calculated && 'red' }">
+            {{ process.processNameFound }}
+          </p>
+        </div>
+
+        <p
+          class="carbon-quantity"
+          [ngStyle]="{ color: !process.calculated && 'red' }"
+        >
+          {{ process.value | number: "1.0-3" }} {{ process.unit }}
+        </p>
+      </div>
     </div>
-    <button mat-raised-button>Calcular Novamente</button>
+
+    <div class="try-again-container">
+      <div>
+        <h3>
+          Para o {{ calculationInfo.name }} conseguimos calcular
+          {{ calculationInfo.calculatedPercentage | percent }} de
+          {{ calculationInfo.processes.length }} processos.
+        </h3>
+        <p>Calcule receitas ou produtos quantas vezes quiser.</p>
+      </div>
+      <button mat-raised-button>Calcular Novamente</button>
+    </div>
   </div>
 </div>
