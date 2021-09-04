@@ -22,7 +22,12 @@ export class CalculationService {
     }
 
     return this.http
-      .get<ProductList[]>(urlRequest, { params: { value: searchedProduct } })
+      .get<ProductList[]>(urlRequest, {
+        params: { value: searchedProduct },
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
       .pipe(take(1));
   }
 
@@ -33,7 +38,13 @@ export class CalculationService {
       urlRequest = `${environment.URL_BASE}/calculation/${calculationId}`;
     }
 
-    return this.http.get<CalculationInfo>(urlRequest).pipe(take(1));
+    return this.http
+      .get<CalculationInfo>(urlRequest, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+      .pipe(take(1));
   }
 
   getCalculationList() {
@@ -43,7 +54,13 @@ export class CalculationService {
       urlRequest = `${environment.URL_BASE}/calculation/requests`;
     }
 
-    return this.http.get<CalculationList[]>(urlRequest).pipe(take(1));
+    return this.http
+      .get<CalculationList[]>(urlRequest, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+      .pipe(take(1));
   }
 
   startCalc(
@@ -59,12 +76,20 @@ export class CalculationService {
     }
 
     return this.http
-      .post(urlRequest, {
-        foodName,
-        type: searchType,
-        recipeId: recipeId,
-        amount: weightAmount,
-      })
+      .post(
+        urlRequest,
+        {
+          foodName,
+          type: searchType,
+          recipeId: recipeId,
+          amount: weightAmount,
+        },
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      )
       .pipe(take(1));
   }
 }
