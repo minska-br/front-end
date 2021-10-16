@@ -26,8 +26,10 @@
         </p>
       </div>
 
-      <img class="image" />
+      <img src="../../../assets/images/result-image.svg" class="image" />
     </div>
+
+    <h2 class="individual-title">Ingredientes</h2>
 
     <div class="carbon-steps-container">
       <div *ngFor="let process of calculationInfo.processes" class="card">
@@ -46,6 +48,25 @@
         >
           {{ process.value | number: "1.0-3" }} {{ process.unit }}
         </p>
+      </div>
+    </div>
+
+    <h2 class="individual-title">Conversões</h2>
+    <p class="individual-desciption">
+      Significa que
+      <span
+        >{{ calculationInfo.totalCarbonFootprint | number: "1.0-3" }}
+        {{ calculationInfo.unit }}</span
+      >
+      equivalem a mesma coisa que:
+    </p>
+
+    <div class="conversions-container">
+      <div *ngFor="let conversion of calculationInfo.conversions" class="card">
+        <div>
+          <div class="title">{{ conversion.value }} {{ conversion.unit }}</div>
+          <div class="description">{{ conversion.name }}</div>
+        </div>
       </div>
     </div>
 

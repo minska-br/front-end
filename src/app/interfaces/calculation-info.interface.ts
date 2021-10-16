@@ -5,6 +5,13 @@ interface CalculationInfo {
   processes: CalculationInfoProcess[];
   calculatedPercentage: number;
   totalCarbonFootprint: number;
+  conversions: CalculationConversions[];
+}
+
+interface CalculationConversions {
+  name: string;
+  value: number;
+  unit: string;
 }
 
 interface CalculationInfoProcess {
