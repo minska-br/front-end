@@ -22,4 +22,4 @@ interface CalculationInfoProcess {
   calculated: boolean;
 }
 
-export { CalculationInfo };
+export { CalculationInfo, CalculationInfoProcess };

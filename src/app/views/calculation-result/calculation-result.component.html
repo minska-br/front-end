@@ -29,7 +29,25 @@
       <img src="../../../assets/images/result-image.svg" class="image" />
     </div>
 
-    <h2 class="individual-title">Ingredientes</h2>
+    <div class="ingredients-edit-container">
+      <h2 class="title">Ingredientes</h2>
+      <div *ngIf="!editMode" (click)="editMode = true" class="custom-button">
+        EDITAR
+      </div>
+      <div
+        *ngIf="editMode"
+        class="custom-button"
+        (click)="handleOnClickToSaveProcesses()"
+      >
+        SALVAR
+      </div>
+    </div>
+
+    <p class="individual-desciption">
+      Abaixo os ingredientes encontrados para o
+      <span>{{ calculationInfo.name }}</span> e suas quantidades. Caso seja
+      necessário alterar algum valor, o valor final do produto será recalculado.
+    </p>
 
     <div class="carbon-steps-container">
       <div *ngFor="let process of calculationInfo.processes" class="card">
@@ -42,12 +60,29 @@
           </p>
         </div>
 
-        <p
-          class="carbon-quantity"
-          [ngStyle]="{ color: !process.calculated && 'red' }"
-        >
-          {{ process.value | number: "1.0-3" }} {{ process.unit }}
-        </p>
+        <div>
+          <mat-form-field
+            appearance="fill"
+            class="full-width"
+            *ngIf="editMode && process.calculated"
+          >
+            <mat-label>Peso ({{ process.unit }})</mat-label>
+            <input
+              matInput
+              type="number"
+              [value]="process.value"
+              (keyup)="handleChangeValueFromIngredient($event, process.name)"
+            />
+          </mat-form-field>
+
+          <p
+            class="carbon-quantity"
+            *ngIf="!editMode || !process.calculated"
+            [ngStyle]="{ color: !process.calculated && 'red' }"
+          >
+            {{ process.value || 0 }} {{ process.unit }}
+          </p>
+        </div>
       </div>
     </div>
 
