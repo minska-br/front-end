@@ -6,7 +6,10 @@ import { MockUrlEnum } from 'src/app/enums/mocks-url.enum';
 import { ProductList } from 'src/app/interfaces/product-list.interface';
 import { Observable } from 'rxjs';
 import { CalculationList } from 'src/app/interfaces/calculation-list.interface';
-import { CalculationInfo } from 'src/app/interfaces/calculation-info.interface';
+import {
+  CalculationInfo,
+  CalculationInfoProcess,
+} from 'src/app/interfaces/calculation-info.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +64,23 @@ export class CalculationService {
         },
       })
       .pipe(take(1));
+  }
+
+  restartCalc(
+    calculationId: string,
+    processesToUpdate: CalculationInfoProcess[]
+  ) {
+    let urlRequest = MockUrlEnum.UPDATE_CALC as string;
+
+    if (environment.production) {
+      urlRequest = `${environment.URL_BASE}/calculation/${calculationId}`;
+    }
+
+    return this.http.patch(urlRequest, processesToUpdate, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
   }
 
   startCalc(
