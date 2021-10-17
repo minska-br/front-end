@@ -20,6 +20,7 @@ interface CalculationInfoProcess {
   unit: string;
   processNameFound: string;
   calculated: boolean;
+  recalculated?: boolean;
 }
 
 export { CalculationInfo, CalculationInfoProcess };

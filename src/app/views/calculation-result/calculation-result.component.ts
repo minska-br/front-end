@@ -50,6 +50,8 @@ export class CalculationResultComponent implements OnInit {
       );
 
       processFound.value = event.target.value || 0;
+      processFound.recalculated = true;
+
       otherProcesses.push(processFound);
 
       this.processesToUpdate = otherProcesses;
@@ -60,7 +62,24 @@ export class CalculationResultComponent implements OnInit {
     this.editMode = false;
 
     if (this.processesToUpdate.length) {
-      this.router.navigateByUrl(PagesEnum.CALCULATIONS);
+      this.loadingService.startLoading();
+
+      const processesToUpdate = this.processesToUpdate.filter(
+        (currentProcess) => currentProcess.recalculated
+      );
+
+      this.calculationService
+        .restartCalc(this.calculationInfo.id, processesToUpdate)
+        .subscribe(
+          () => {
+            this.router.navigateByUrl(PagesEnum.CALCULATIONS);
+          },
+          () => {
+            this.snackbar.open(
+              'Ocorreu um erro ao realizar a operação. Tente novamente. '
+            );
+          }
+        );
     }
   }
 
