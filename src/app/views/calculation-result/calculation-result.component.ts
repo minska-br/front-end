@@ -64,12 +64,8 @@ export class CalculationResultComponent implements OnInit {
     if (this.processesToUpdate.length) {
       this.loadingService.startLoading();
 
-      const processesToUpdate = this.processesToUpdate.filter(
-        (currentProcess) => currentProcess.recalculated
-      );
-
       this.calculationService
-        .restartCalc(this.calculationInfo.id, processesToUpdate)
+        .restartCalc(this.calculationInfo.id, this.processesToUpdate)
         .subscribe(
           () => {
             this.router.navigateByUrl(PagesEnum.CALCULATIONS);
