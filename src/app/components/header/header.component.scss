@@ -30,12 +30,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Helvetica Neue", "Roboto", sans-serif;
 
     p {
       margin-bottom: 0;
       margin-right: 24px;
       font-weight: bolder;
       color: #304050;
+      text-transform: uppercase;
 
       &:hover {
         cursor: pointer;
