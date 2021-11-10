@@ -39,6 +39,10 @@ export class CalculationResultComponent implements OnInit {
     return this.loadingService.isLoading;
   }
 
+  formatUnit(unit: string) {
+    return unit.replace('.', ',').replace(/_/g, ' ');
+  }
+
   handleChangeValueFromIngredient(event: any, process: any) {
     const processFound = this.calculationInfo.processes.find(
       (currentProcess) => currentProcess.name === process
