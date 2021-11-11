@@ -80,7 +80,7 @@
             *ngIf="!editMode || !process.calculated"
             [ngStyle]="{ color: !process.calculated && 'red' }"
           >
-            {{ process.value || 0 }} {{ process.unit }}
+            {{ process.value || 0 | number: "1.3-3" }} {{ process.unit }}
           </p>
         </div>
       </div>
