@@ -80,6 +80,8 @@ export class CalculationResultComponent implements OnInit {
               undefined,
               { duration: 5000 }
             );
+
+            this.router.navigateByUrl(PagesEnum.CALCULATIONS);
           }
         );
     }
