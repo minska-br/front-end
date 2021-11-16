@@ -62,7 +62,9 @@ export class PutWeightComponent implements OnInit {
         },
         () => {
           this.snackbar.open(
-            'Ocorreu um erro ao realizar o cálculo. Tente novamente.'
+            'Ocorreu um erro ao realizar o cálculo. Tente novamente.',
+            undefined,
+            { duration: 5000 }
           );
 
           this.loadingService.stopLoading();

@@ -53,7 +53,7 @@ export class CalculationResultComponent implements OnInit {
         (currentProcess) => currentProcess.name !== process
       );
 
-      processFound.value = event.target.value || 0;
+      processFound.amount = event.target.value || 0;
       processFound.recalculated = true;
 
       otherProcesses.push(processFound);
@@ -76,7 +76,9 @@ export class CalculationResultComponent implements OnInit {
           },
           () => {
             this.snackbar.open(
-              'Ocorreu um erro ao realizar a operação. Tente novamente. '
+              'Ocorreu um erro ao realizar a operação. Tente novamente. ',
+              undefined,
+              { duration: 5000 }
             );
           }
         );
@@ -100,7 +102,9 @@ export class CalculationResultComponent implements OnInit {
       },
       () => {
         this.snackbar.open(
-          'Ocorreu um erro ao realizar a operação. Tente novamente. '
+          'Ocorreu um erro ao realizar a operação. Tente novamente. ',
+          undefined,
+          { duration: 5000 }
         );
 
         this.loadingService.stopLoading();

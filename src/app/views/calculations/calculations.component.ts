@@ -49,7 +49,9 @@ export class CalculationsComponent implements OnInit, OnDestroy {
       },
       () => {
         this.snackbar.open(
-          'Ocorreu um erro ao realizar o carregamento. Tente novamente. '
+          'Ocorreu um erro ao realizar o carregamento. Tente novamente. ',
+          undefined,
+          { duration: 5000 }
         );
 
         this.loadingService.stopLoading();

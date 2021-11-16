@@ -46,7 +46,9 @@ export class ChooseWordComponent implements OnInit {
         },
         () => {
           this.snackbar.open(
-            'Ocorreu um erro ao realizar a busca. Tente novamente. '
+            'Ocorreu um erro ao realizar a busca. Tente novamente. ',
+            undefined,
+            { duration: 5000 }
           );
 
           this.stepService.currentStep = StepsSearchEnum.SET_SEARCH;

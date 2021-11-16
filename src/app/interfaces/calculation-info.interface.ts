@@ -19,6 +19,7 @@ interface CalculationInfoProcess {
   value: number;
   unit: string;
   processNameFound: string;
+  amount: number;
   calculated: boolean;
   recalculated?: boolean;
 }
